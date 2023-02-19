@@ -11,7 +11,7 @@ const timerStartBtn = document.querySelector('[data-start]');
 const calendarInput = document.querySelector('#datetime-picker');
 let timerId = null;
 timerStartBtn.disabled = true;
-
+// Налаштування бібліотеки
 const options = {
   enableTime: true,
   time_24hr: true,
