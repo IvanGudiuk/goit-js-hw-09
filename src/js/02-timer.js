@@ -38,7 +38,7 @@ const handleTimerClick = () => {
     const counterTimeMs = convertMs(counterTime);
     for (let elem in counterTimeMs) {
       timerRefs[elem].textContent =
-        counterTimeMs[elem].toString().padStart(2, '0') || '';
+        counterTimeMs[elem].toString().padStart(2, '0');
     }
     if (counterTime < 1000) {
       clearInterval(timerId);
