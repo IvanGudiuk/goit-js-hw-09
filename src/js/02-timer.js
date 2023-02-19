@@ -11,6 +11,22 @@ const timerStartBtn = document.querySelector('[data-start]');
 const calendarInput = document.querySelector('#datetime-picker');
 let timerId = null;
 timerStartBtn.disabled = true;
+
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    if (selectedDates[0] < new Date()) {
+      Notiflix.Notify.failure('Please choose a date in the future');
+    } else {
+      timerStartBtn.disabled = false;
+      timerStartBtn.addEventListener('click', handleTimerClick);
+    }
+  },
+};
+
 flatpickr(calendarInput, options);
 const handleTimerClick = () => {
   timerId = setInterval(() => {
@@ -29,21 +45,6 @@ const handleTimerClick = () => {
       timerStartBtn.disabled = false;
     }
   }, 1000);
-};
-
-const options = {
-  enableTime: true,
-  time_24hr: true,
-  defaultDate: new Date(),
-  minuteIncrement: 1,
-  onClose(selectedDates) {
-    if (selectedDates[0] < new Date()) {
-      Notiflix.Notify.failure('Please choose a date in the future');
-    } else {
-      timerStartBtn.disabled = false;
-      timerStartBtn.addEventListener('click', handleTimerClick);
-    }
-  },
 };
 
 function convertMs(ms) {
