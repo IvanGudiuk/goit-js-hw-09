@@ -9,9 +9,10 @@ const timerRefs = {
 };
 const timerStartBtn = document.querySelector('[data-start]');
 const calendarInput = document.querySelector('#datetime-picker');
+
 let timerId = null;
 timerStartBtn.disabled = true;
-// Налаштування бібліотеки
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -29,8 +30,8 @@ const options = {
 
 flatpickr(calendarInput, options);
 const handleTimerClick = () => {
+  timerStartBtn.disabled = true;
   timerId = setInterval(() => {
-    timerStartBtn.disabled = true;
     const selectedDate = new Date(calendarInput.value).getTime();
     const currentTime = new Date().getTime();
     const counterTime = selectedDate - currentTime;
