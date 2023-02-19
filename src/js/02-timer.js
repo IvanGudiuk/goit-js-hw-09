@@ -36,7 +36,7 @@ const handleTimerClick = () => {
     const currentTime = new Date().getTime();
     const counterTime = selectedDate - currentTime;
     const counterTimeMs = convertMs(counterTime);
-    for (elem in counterTimeMs) {
+    for (let elem in counterTimeMs) {
       timerRefs[elem].textContent =
         counterTimeMs[elem].toString().padStart(2, '0') || '';
     }
