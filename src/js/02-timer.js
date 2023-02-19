@@ -36,9 +36,8 @@ const handleTimerClick = () => {
     const counterTime = selectedDate - currentTime;
     const counterTimeMs = convertMs(counterTime);
     for (elem in counterTimeMs) {
-      timerRefs[elem].textContent = counterTimeMs[elem]
-        .toString()
-        .padStart(2, '0');
+      timerRefs[elem].textContent =
+        counterTimeMs[elem].toString().padStart(2, '0') || '';
     }
     if (counterTime < 1000) {
       clearInterval(timerId);
